@@ -16,7 +16,7 @@ selectedWord = random.choice(listOfWords)
 print(f'selectedWord: {selectedWord}')
 
 #take letter inputs from the user and check if the letter is in the chosen word
-inputLetter = input('guess a letter u think is in the word:\n')
+inputLetter = input('guess a letter u think is in the word:\n').lower()
 
 #checking for letter in word and updating the list with each letter position compared
 selectedWordList = splitFunction(selectedWord)
