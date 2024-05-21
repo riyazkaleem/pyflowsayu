@@ -114,6 +114,13 @@ def letterReplace(letter, updatedList):
     updatedCombinedString = updatedString.replace(letter, '_')
     return updatedCombinedString
 
+#function to check if the person won the game
+def gameWonCheck(updatedCombinedList):
+    if '_' in updatedCombinedList:
+        return False
+    else:
+        return True
+
 #implementation
 #from a group of words selecting a word
 listOfWords = ['my', 'name', 'is', 'riyaz', 'kaleem']
@@ -139,7 +146,15 @@ print(f'letters matching: {lettersMatching}')
 
 #implementing creating final list of matched letter
 updatedCombinedList = matchingLetter(lettersMatching, updatedList)
-print(f'updated list: {updatedCombinedList}')
+
+#checking if the person won the game
+gameWonFLag = gameWonCheck(updatedCombinedList)
+if gameWonFLag == True:
+    print('You won')
+else:
+    print('You lose')
+
+# print(f'updated list: {updatedCombinedList}')
 
 #check if the person lost or won
 # if "_" in updatedCombinedList:
