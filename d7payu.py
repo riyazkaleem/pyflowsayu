@@ -1,5 +1,7 @@
 #libraries
 import random
+import d7payuhart
+import d7payuhwords
 
 #functions
 #function to split word into characters
@@ -28,7 +30,7 @@ def actualGameLogic(updatedList):
         #take letter inputs from the user 
         inputLetter = input('guess a letter u think is in the word:\n').lower()
 
-        #print(f'updated list before implementing letter replace function {updatedList}')
+        print(f'updated list before implementing letter replace function {updatedList}')
         #implementation of the letter replace function
         if replaceAllLetterMatch(inputLetter, updatedList):
             lettersMatching.append(inputLetter)
@@ -44,8 +46,8 @@ def actualGameLogic(updatedList):
 
 #function to match the letters
 def matchingLetter(lettersMatching, updatedList):
-    print(f'updated list inside matching letter function: {updatedList}')
-    print(f'letters matching inside matching letter function: {lettersMatching}')
+    # print(f'updated list inside matching letter function: {updatedList}')
+    # print(f'letters matching inside matching letter function: {lettersMatching}')
     # updatedCombinedList = []
     deathCounter = 6
     for letter in updatedList:
@@ -78,65 +80,10 @@ def gameWonCheck(updatedCombinedList):
 
 #implementation
 #declaring ascii art for hangman
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+stages = d7payuhart.stages
 
 #from a group of words selecting a word
-listOfWords = ['my', 'name', 'is', 'riyaz', 'kaleem']
+listOfWords = d7payuhwords.word_list
 selectedWord = random.choice(listOfWords)
 #print(f'selectedWord: {selectedWord}')
 
@@ -150,12 +97,13 @@ updatedList=[]
 for letter in selectedWordList:
     updatedList.append(letter)
 # finalPrintList=updatedList
-print(f'list we are working on: {updatedList}')
+# print(f'list we are working on: {updatedList}')
+print(d7payuhart.logo)
 
 #implementation of actual game logic
 lettersMatching = []
 lettersMatching = actualGameLogic(updatedList)
-print(f'letters matching: {lettersMatching}')
+# print(f'letters matching: {lettersMatching}')
 
 #implementing creating final list of matched letter
 updatedCombinedList = matchingLetter(lettersMatching, updatedList)
