@@ -23,7 +23,7 @@ def actualGameLogic(updatedList):
     chances = 6
     lettersMatching = []
 
-    #loop to play
+    #loop to playe
     while chances > 0:
         #take letter inputs from the user 
         inputLetter = input('guess a letter u think is in the word:\n').lower()
@@ -32,6 +32,9 @@ def actualGameLogic(updatedList):
         #implementation of the letter replace function
         if replaceAllLetterMatch(inputLetter, updatedList):
             lettersMatching.append(inputLetter)
+
+        if inputLetter not in updatedList:
+            print(stages[chances])
 
         #update no of chances
         chances -= 1
