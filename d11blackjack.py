@@ -6,14 +6,6 @@
 # our score= dealer score: its a draw
 # if the dealers value is < 17, they must take an other card
 
-#replit ayu
-############### Blackjack Project #####################
-
-#Difficulty Normal 😎: Use all Hints below to complete the project.
-#Difficulty Hard 🤔: Use only Hints 1, 2, 3 to complete the project.
-#Difficulty Extra Hard 😭: Only use Hints 1 & 2 to complete the project.
-#Difficulty Expert 🤯: Only use Hint 1 to complete the project.
-
 ############### Our Blackjack House Rules #####################
 
 ## The deck is unlimited in size. 
@@ -68,3 +60,68 @@
 
 #Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
 
+# --------------------------------------------------------------------
+#import modules
+import d11blackjackart
+import random
+
+#functiondeclarations
+def startblackjack(cards, playerdeck, computerdeck):
+    firstround(playerdeck, computerdeck, cards)
+
+def firstround(playerdeck, computerdeck, cards):
+    playercard = random.choice(cards)
+    playerdeck.append(playercard)
+    playercard = random.choice(cards)
+    playerdeck.append(playercard)
+    computercard = random.choice(cards)
+    computerdeck.append(computercard)
+    print(f'your cards: {playerdeck}, current score: {sum(playerdeck)}')
+    print(f"computer's first card: {computerdeck[0]}")
+
+def infiniteround(playerdeck, computerdeck, cards):
+    playercard = random.choice(cards)
+    playerdeck.append(playercard)
+    computercard = random.choice(cards)
+    computerdeck.append(computercard)
+    print(f'your cards: {playerdeck}, current score: {sum(playerdeck)}')
+    print(f"computer's first card: {computerdeck[0]}")
+
+#implementation
+print(d11blackjackart.logo)
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+inpresponse1 = input(f"do you wanna play black jack 'y' or 'n': ")
+playerdeck = []
+computerdeck = [] 
+if inpresponse1 == 'y':
+    print(f'cool lets play 😎')
+    startblackjack(cards, playerdeck, computerdeck)
+else:
+    print(f'iss okay lets play later 🥲')
+inpresponse2 = input(f"type 'y' to get another card, type 'n' to pass: ")
+sumo = 0
+while inpresponse2 == 'y':
+    infiniteround(playerdeck, computerdeck, cards)
+    playerdecksum = sum(playerdeck)
+    computerdecksum = sum(computerdeck)
+    if playerdecksum <= 21:
+        inpresponse2 = input(f"type 'y' to get another card, type 'n' to pass: ")
+    elif playerdecksum > 21:
+        print(f'your final hand : {playerdeck}, final score: {sum(playerdeck)}')
+        print(f"computer's final hand: {computerdeck}, final score: {sum(computerdeck)}")
+        print('you went over. you lose 🥲')
+        inpresponse2 = 'l'
+
+if inpresponse2 == 'n':
+    computerdeck.append(random.choice(cards))
+    compdeckval = 21-sum(computerdeck)
+    if (21-sum(computerdeck)) < 0:
+        compdeckval = sum(computerdeck)-21
+    if (21-sum(playerdeck)) > compdeckval:
+        print(f"your final hand: {playerdeck}, final score: {sum(playerdeck)}")
+        print(f"computer's final hand: {computerdeck}, final score: {sum(computerdeck)}")
+        print('you lose 😢')
+    else:
+        print(f"your final hand: {playerdeck}, final score: {sum(playerdeck)}")
+        print(f"computer's final hand: {computerdeck}, final score: {sum(computerdeck)}")
+        print('you win 😍')
