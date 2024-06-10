@@ -1,7 +1,7 @@
 #libraries
 import random
-import d7payuhart
-import d7payuhwords
+import section7.d7payuhart as d7payuhart
+import section7.d7payuhwords as d7payuhwords
 
 #functions
 #function to split word into characters

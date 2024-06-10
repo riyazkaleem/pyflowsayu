@@ -1,6 +1,6 @@
 #importing libraries
 import math
-import d8art
+import section8.d8art as d8art
 
 #function declarations
 def greet():

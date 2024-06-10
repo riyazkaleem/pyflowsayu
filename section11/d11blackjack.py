@@ -62,7 +62,7 @@
 
 # --------------------------------------------------------------------
 #import modules
-import d11blackjackart
+import section11.d11blackjackart as d11blackjackart
 import random
 
 #functiondeclarations
