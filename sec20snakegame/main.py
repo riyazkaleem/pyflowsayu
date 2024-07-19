@@ -2,6 +2,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 import time
 
 #creating objects
@@ -15,6 +16,10 @@ screenu.title('my snake game')
 #creating a snake, food object from snake class
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
+
+#initializing the scoreboard
+scoreboard.current_score=0
 
 #key bindings arrow keys to snake movement
 screenu.listen()
@@ -36,6 +41,7 @@ while game_is_on:
     if snake.segments[0].distance(food) < 15:
         print('yum yum yum')
         food.refresh()
+        scoreboard.turtle_write()
 
 #final screen method for exit on click
 screenu.exitonclick()
