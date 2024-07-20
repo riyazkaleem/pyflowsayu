@@ -32,16 +32,28 @@ screenu.onkey(snake.right, "Right")
 game_is_on = True
 while game_is_on:
     screenu.update()
-    time.sleep(0.1)
+    time.sleep(0.01)
 
     #calls the move method from the snake class
     snake.move()
 
     #detecting the colliison of snake head with food
     if snake.segments[0].distance(food) < 15:
-        print('yum yum yum')
+        # print('yum yum yum')
         food.refresh()
+        snake.extend()
         scoreboard.turtle_write()
+
+    #detecting the collision of snake with the wall
+    if (snake.segments[0].xcor() > 280) or (snake.segments[0].ycor() > 280) or (snake.segments[0].xcor() < -280) or (snake.segments[0].ycor() < -280):
+        scoreboard.gameover()
+        game_is_on = False
+
+    #detect collision with tail
+    for segment in snake.segments[1:]:
+        if snake.segments[0].distance(segment) < 10:
+            game_is_on = False
+            scoreboard.gameover()
 
 #final screen method for exit on click
 screenu.exitonclick()

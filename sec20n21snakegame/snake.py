@@ -23,11 +23,21 @@ class Snake:
         # print(chinni.position())
         # print(chinni.turtlesize())
         for position in STARTING_POSITIONS:
-            t_object=Turtle(shape='circle')
-            t_object.color('white')
-            t_object.penup()
-            t_object.goto(position)
-            self.segments.append(t_object)
+            self.add_segment(position)
+    
+    #creating a new segment
+    def add_segment(self, position):
+        t_object=Turtle(shape='circle')
+        t_object.color('white')
+        t_object.penup()
+        t_object.goto(position)
+        self.segments.append(t_object)
+
+    #extending the snake segment
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
+        # new_t.color('white')
+
 
     #creating a snake move method
     def move(self):
