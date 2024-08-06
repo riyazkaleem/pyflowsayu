@@ -26,8 +26,5 @@ while game_is_on:
         print('game level done')
         player.player_refresh()
 
-    #controlling car movement
-    if car.xcor() >= -280:
-        car.car_movement()
-    else:
-        car.car_refresh()
+    car.create_car()
+    car.move_cars()
