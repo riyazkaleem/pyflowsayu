@@ -11,6 +11,7 @@ screen.tracer(0)
 #creating a player, car object
 player = Player()
 car = CarManager()
+sboard = Scoreboard()
 
 #creating key bindings for turtle crossing
 screen.listen()
@@ -25,6 +26,18 @@ while game_is_on:
     if player.ycor() >= player.finish_line:
         print('game level done')
         player.player_refresh()
+        sboard.increase_level()
+        sboard.update_scoreboard()
 
     car.create_car()
     car.move_cars()
+
+    #detecting turtle collision with car
+    for acar in car.all_cars:
+        if acar.distance(player) < 30:
+            print('car collided with turtle')
+            sboard.game_over()
+            game_is_on = False
+
+
+screen.exitonclick()
